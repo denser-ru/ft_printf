@@ -50,3 +50,9 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Anjuta
+*.c~
+*~
+ft_printf
+
