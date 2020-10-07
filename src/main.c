@@ -5,13 +5,19 @@
  * 
  */
 
-#include "ft_printf.h"
+# include "ft_printf.h"
+# include <stdio.h>
+
 int main()
 {
 	int		i;
 
-	ft_putendl("ft_printf:");
-	i = ft_printf("write: %d", 123);
+//	printf("orig_pf: %-20.10f %.5d\n", 12345.12345, 5);
+	i = printf("origin_pf: %0 %3s %yk\n", 123, "=)");
+	ft_putstr("return: ");
+	ft_putnbr(i);
+	ft_putchar ('\n');
+	i = ft_printf("ft_printf: %0 %3s %yk\n", 123, "=)");
 	ft_putstr("return: ");
 	ft_putnbr(i);
 	ft_putchar ('\n');

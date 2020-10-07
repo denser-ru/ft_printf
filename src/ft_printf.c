@@ -5,8 +5,22 @@
 int			ft_printf(const char *format, ...)
 {
 	va_list		arg;
+	t_pf		pf_s;
+	t_pf		*pf;
 
+	pf = &pf_s;
+	ft_bzero(pf, sizeof(t_pf));
+	pf->arg = &arg;
+	pf->start = (char*)format;
+	pf->cur = pf->start;
 	va_start(arg, format);
-	ft_putnendl (format, ft_strchr (format, '%') - format);
-	return (ft_strchr (format, '%') - format);
+	while ((pf->next = ft_strchr (pf->cur, '%')))
+	{
+		pf->i += pf->next - pf->cur;
+		ft_putnstr(pf->cur, pf->next - pf->cur);
+		pf->cur = pf->next + 1;
+		ft_parsing(pf, pf->cur);
+	}
+	ft_putnstr(pf->cur, ft_strchr (pf->cur, '\0') - pf->cur);
+	return (pf->i + ft_strchr (pf->cur, '\0') - pf->cur);
 }

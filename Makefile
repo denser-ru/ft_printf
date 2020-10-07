@@ -3,14 +3,14 @@
 
 NAME = ft_printf
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = ##-Wall -Wextra -Werror -g
 
 SRCDIR  = ./src/
 INCDIR  = ./inc/
 OBJDIR  = ./obj/
 FTDIR   = ./libft/
 
-SRC = main.c ft_printf.c
+SRC = main.c ft_printf.c ft_parsing.c ft_putarg.c
 OBJ	= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 LIBFT = $(FTDIR)libft.a
 
