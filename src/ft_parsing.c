@@ -12,6 +12,7 @@ static void		ft_get_width(t_pf *pf, char **format)
 
 static void		ft_get_precision(t_pf *pf, char **format)
 {
+	pf->flags = pf->flags | PF_PREC;
 	++(*format);
 	pf->precision = ft_atoi(*format);
 	while (ft_strchr("0123456789", **format))
@@ -31,7 +32,6 @@ static void		ft_get_flag(t_pf *pf, char **format)
 		pf->flags = pf->flags | PF_SPACE;
 	else if (**format == '#')
 		pf->flags = pf->flags | PF_SHARP;
-	++(*format);
 }
 
 static void		ft_get_modifier(t_pf *pf, char **format)
@@ -70,18 +70,7 @@ void		ft_parsing(t_pf *pf, char *format)
 			break;
 		++format;
 	}
-	if(*format && ft_memchr("diouxXfcsp%", *format, 11))
+	if(*format)
 		pf->cur = format;
-	else
-		--format;
 	ft_putarg(pf, format);
 }
-
-/*void		ft_parsing(t_pf *pf)
-{
-	if (*((pf->next) + 1) == 'd')
-		ft_putnbr(va_arg(*(pf->arg), int));
-	if (*((pf->next) + 1) == 's')
-		ft_putstr(va_arg(*(pf->arg), char*));
-	++(pf->next);
-}*/
