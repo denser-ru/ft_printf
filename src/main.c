@@ -12,13 +12,17 @@ int main()
 {
 	int		i;
 
-//	printf("orig_pf: %-20.10f %.5d\n", 12345.12345, 5);
-	i = printf("origin_pf: %+3.5d %-10.3s %yk %c %p x = %5.5o\n", -1,
-				"12345", '!', &i, 16);
+	i = printf("origin_pf: % 3.d %-10.3s %yk %c x = % #+20.12X p = % +0p o = %o u = %u\n", 0,
+		"12345", '!',
+			(unsigned long long int)(18446744073709551615ULL),
+				(void*)(54321), 12345, 12345);
 	ft_putstr("return: ");
 	ft_putnbr(i);
 	ft_putchar ('\n');
-	i = ft_printf("ft_printf: %+3.5d %-10.3s %yk %c %p\n", -1, "12345", '!', &i);
+	i = ft_printf("ft_printf: % 3.d %-10.3s %yk %c x = % #+20.12X p = % +0p o = %o u = %u\n", 0,
+		"12345", '!',
+			(unsigned long long int)(18446744073709551615ULL),
+				(void*)(54321), 12345, 12345);
 	ft_putstr("return: ");
 	ft_putnbr(i);
 	ft_putchar ('\n');

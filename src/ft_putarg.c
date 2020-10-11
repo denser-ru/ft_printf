@@ -12,6 +12,12 @@ void		ft_putarg(t_pf *pf, char *format)
 		ft_put_pf_char(pf, 0);
 	else if (*format == 's')
 		ft_put_pf_str(pf, NULL);
+	else if (*format == 'x' || *format == 'X' || *format == 'p')
+		ft_put_oxup(pf, *format, 16);
+	else if (*format == 'o')
+		ft_put_oxup(pf, *format, 8);
+	else if (*format == 'u')
+		ft_put_oxup(pf, *format, 10);
 	else
 	{
 		ft_putchar('%');

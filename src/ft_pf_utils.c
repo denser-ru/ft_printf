@@ -8,12 +8,22 @@ void				ft_putchar_n(char c, int i)
 		ft_putchar(c);
 }
 
-unsigned long long	ft_get_max_base(int base)
+unsigned long long int	ft_get_max_base(int base)
 {
-	unsigned long long	i;
+	unsigned long long int	i;
 
 	i = 1;
 	while (i * base > i)
 		i *= base;
+	return (i);
+}
+
+unsigned long long int	ft_get_nblen_base(unsigned long long int nb, int base)
+{
+	unsigned long long int	i;
+
+	i = 0;
+	while ((nb /= base))
+		++i;
 	return (i);
 }

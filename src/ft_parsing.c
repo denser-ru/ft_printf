@@ -46,9 +46,9 @@ static void		ft_get_modifier(t_pf *pf, char **format)
 	else if (**format == 'l')
 	{
 		if (*((*format) + 1) == 'l' && *(++(*format)))
-			pf->flags = pf->flags | PF_L;
-		else
 			pf->flags = pf->flags | PF_LL;
+		else
+			pf->flags = pf->flags | PF_L;
 	}
 	else if (**format == 'L')
 		pf->flags = pf->flags | PF_ML;
