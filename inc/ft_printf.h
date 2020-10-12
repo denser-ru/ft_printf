@@ -39,3 +39,4 @@ void				ft_put_digit(t_pf *pf, int nb, int i, int precision);
 void				ft_put_percent(t_pf *pf);
 void				ft_put_pf_char(t_pf *pf, char c);
 void				ft_put_pf_str(t_pf *pf, char *s);
+void				ft_put_f(t_pf *pf);

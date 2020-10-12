@@ -18,6 +18,8 @@ void		ft_putarg(t_pf *pf, char *format)
 		ft_put_oxup(pf, *format, 8);
 	else if (*format == 'u')
 		ft_put_oxup(pf, *format, 10);
+	else if (*format == 'f')
+		ft_put_f(pf);
 	else
 	{
 		ft_putchar('%');

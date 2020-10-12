@@ -11,7 +11,7 @@ OBJDIR  = ./obj/
 FTDIR   = ./libft/
 
 SRC = main.c ft_printf.c ft_parsing.c ft_putarg.c ft_pf_utils.c ft_put_digit.c \
-		ft_put_src.c ft_put_oxup.c
+		ft_put_src.c ft_put_oxup.c ft_put_f.c
 OBJ	= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 LIBFT = $(FTDIR)libft.a
 
