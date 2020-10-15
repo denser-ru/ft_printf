@@ -1,7 +1,8 @@
 
 ## Created by cayako
 
-NAME = ft_printf
+NAME = libftprintf.a
+NAMETEST = ft_printf
 CC = gcc
 CFLAGS = ##-Wall -Wextra -Werror -g
 
@@ -29,7 +30,12 @@ $(LIBFT):
 	make -C $(FTDIR)
 
 $(NAME): $(LIBFT) $(OBJ)
-	$(CC) $(OBJ) $(LIBFT) -o $(NAME)
+	ar rc $(NAME) $(OBJ)
+	ranlib $(NAME)
+## 	$(CC) -c $(OBJ) $(LIBFT)
+
+test:
+	$(CC) $(NAME) $(LIBFT) -o $(NAMETEST)
 
 count:
 	wc ./src/*.c ./inc/*.h
@@ -40,6 +46,7 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f $(NAMETEST)
 	make -C $(FTDIR) fclean
 
 re: fclean all
