@@ -7,7 +7,7 @@ void		ft_putarg(t_pf *pf, char *format)
 	if (*format == '%')
 		ft_put_percent(pf);
 	else if (*format == 'd' || *format == 'i')
-		ft_put_digit(pf, 0, 0, pf->precision);
+		ft_put_digit(pf, 0, pf->width, pf->precision);
 	else if (*format == 'c')
 		ft_put_pf_char(pf, 0);
 	else if (*format == 's')

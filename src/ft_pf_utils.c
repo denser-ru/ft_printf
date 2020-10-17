@@ -18,7 +18,7 @@ unsigned long long int	ft_get_max_base(int base)
 	return (i);
 }
 
-unsigned long long int	ft_get_nblen_base(unsigned long long int nb, int base)
+int	ft_get_nblen_base(unsigned long long nb, int base)
 {
 	unsigned long long int	i;
 

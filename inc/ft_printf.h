@@ -24,6 +24,7 @@ typedef struct		s_pf
 	int				i;
 	int				width;
 	int				precision;
+	int				z;
 	int				flags;
 }					t_pf;
 
@@ -33,9 +34,10 @@ void				ft_putarg(t_pf *pf, char *format);
 
 void				ft_putchar_n(char c, int i);
 unsigned long long	ft_get_max_base(int base);
-unsigned long long	ft_get_nblen_base(unsigned long long nb, int base);
+int					ft_get_nblen_base(unsigned long long nb, int base);
 void				ft_put_oxup(t_pf *pf, char f, int base);
-void				ft_put_digit(t_pf *pf, int nb, int i, int precision);
+void				ft_put_atoi_base(unsigned long long int nb, int base, char f);
+void				ft_put_digit(t_pf *pf, long long nb, int width, int prec);
 void				ft_put_percent(t_pf *pf);
 void				ft_put_pf_char(t_pf *pf, char c);
 void				ft_put_pf_str(t_pf *pf, char *s);

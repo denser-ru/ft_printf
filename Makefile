@@ -4,21 +4,24 @@
 NAME = libftprintf.a
 NAMETEST = ft_printf
 CC = gcc
-CFLAGS = ##-Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -O3 -march=native
 
 SRCDIR  = ./src/
 INCDIR  = ./inc/
 OBJDIR  = ./obj/
 FTDIR   = ./libft/
 
-SRC = main.c ft_printf.c ft_parsing.c ft_putarg.c ft_pf_utils.c ft_put_digit.c \
+SRC = ft_printf.c ft_parsing.c ft_putarg.c ft_pf_utils.c ft_put_digit.c \
 		ft_put_src.c ft_put_oxup.c ft_put_f.c
+FTSRC = ft_putchar.c ft_putstr.c ft_bzero.c ft_putnstr.c ft_strchr.c ft_atoi.c \
+		ft_memchr.c ft_putnbr.c ft_strlen.c ft_memset.c ft_iswhitespace.c \
+		ft_isdigit.c
+
 OBJ	= $(addprefix $(OBJDIR),$(SRC:.c=.o))
+FTOBJ	= $(addprefix $(FTDIR),$(FTSRC:.c=.o))
 LIBFT = $(FTDIR)libft.a
 
-.PHONY: all clean fclean count
-
-all: obj $(LIBFT) $(NAME)
+all: $(NAME)
 
 obj:
 	mkdir -p $(OBJDIR)
@@ -27,26 +30,27 @@ $(OBJDIR)%.o: $(SRCDIR)%.c
 	$(CC) $(CFLAGS) -I $(INCDIR) -I $(FTDIR) -o $@ -c $<
 
 $(LIBFT):
-	make -C $(FTDIR)
+	@make -C $(FTDIR)
 
-$(NAME): $(LIBFT) $(OBJ)
-	ar rc $(NAME) $(OBJ)
+$(NAME): obj $(LIBFT) $(OBJ) $(FTOBJ)
+	ar rc $(NAME) $(OBJ) $(FTOBJ)
 	ranlib $(NAME)
-## 	$(CC) -c $(OBJ) $(LIBFT)
-
-test:
-	$(CC) $(NAME) $(LIBFT) -o $(NAMETEST)
 
 count:
 	wc ./src/*.c ./inc/*.h
 
 clean:
-	rm -f $(OBJDIR)*.o
 	make -C $(FTDIR) clean
+	rm -f $(OBJDIR)*.o
 
 fclean: clean
+	@rm -f $(NAMETEST)
+	@make -C $(FTDIR) fclean
 	rm -f $(NAME)
-	rm -f $(NAMETEST)
-	make -C $(FTDIR) fclean
 
 re: fclean all
+
+test: $(OBJDIR)main.o $(SRCDIR)main.c $(NAME)
+	@$(CC) $(SRCDIR)main.c $(NAME) $(LIBFT) -I $(INCDIR) -I $(FTDIR) -o $(NAMETEST)
+
+.PHONY: all clean fclean count
