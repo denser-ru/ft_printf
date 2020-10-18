@@ -51,6 +51,6 @@ fclean: clean
 re: fclean all
 
 test: $(OBJDIR)main.o $(SRCDIR)main.c $(NAME)
-	@$(CC) $(SRCDIR)main.c $(NAME) $(LIBFT) -I $(INCDIR) -I $(FTDIR) -o $(NAMETEST)
+	@$(CC) $(SRCDIR)main.c $(NAME) -I $(INCDIR) -I $(FTDIR) -o $(NAMETEST)
 
 .PHONY: all clean fclean count

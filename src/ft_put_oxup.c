@@ -1,6 +1,16 @@
-/*ft_put_ox.c by cayako*/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_put_oxup.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cayako <cayako@student.21-school.ru>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/18 14:24:33 by cayako            #+#    #+#             */
+/*   Updated: 2020/10/18 14:24:40 by cayako           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-# include "ft_printf.h"
+#include "ft_printf.h"
 
 void		ft_put_atoi_base(unsigned long long int nb, int base, char f)
 {
@@ -30,7 +40,7 @@ void		ft_put_atoi_base(unsigned long long int nb, int base, char f)
 	ft_putchar(abc[nb + (f == 'X' ? 16 : 0)]);
 }
 
-void		ft_put_prefix(t_pf *pf, char f, int *width, unsigned long long int nb)
+void		ft_put_prefix(t_pf *pf, char f, int *width, unsigned long long nb)
 {
 	if (!(pf->flags & PF_ALIGN) && !(pf->flags & PF_ZERO))
 		ft_putchar_n(' ', *width);
@@ -61,7 +71,7 @@ void		ft_put_x(t_pf *pf, char f, int base, unsigned long long int nb)
 			|| f == 'p') && nb)
 		size = f == 'o' ? size + 1 : size + 2;
 	prec = (pf->precision - size) > 0 ? pf->precision - size : 0;
-	width = pf->width - size - prec > 0 ? pf->width - size - prec: 0;
+	width = pf->width - size - prec > 0 ? pf->width - size - prec : 0;
 	ft_put_prefix(pf, f, &width, nb);
 	pf->i += width + size + prec;
 	if ((pf->flags & PF_PREC) && prec)

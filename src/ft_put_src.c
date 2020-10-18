@@ -1,14 +1,24 @@
-/*ft_put_src.c by cayako*/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_put_src.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cayako <cayako@student.21-school.ru>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/18 14:24:58 by cayako            #+#    #+#             */
+/*   Updated: 2020/10/18 14:25:06 by cayako           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-# include "ft_printf.h"
+#include "ft_printf.h"
 
-void			ft_put_percent(t_pf *pf)
+void		ft_put_percent(t_pf *pf)
 {
 	ft_putchar('%');
 	++(pf->i);
 }
 
-void			ft_put_pf_char(t_pf *pf, char c)
+void		ft_put_pf_char(t_pf *pf, char c)
 {
 	int		space;
 

@@ -1,6 +1,16 @@
-/*ft_parsing.c by cayako*/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_parsing.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cayako <cayako@student.21-school.ru>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/18 14:21:51 by cayako            #+#    #+#             */
+/*   Updated: 2020/10/18 14:22:09 by cayako           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-# include "ft_printf.h"
+#include "ft_printf.h"
 
 static void		ft_get_width(t_pf *pf, char **format)
 {
@@ -54,11 +64,11 @@ static void		ft_get_modifier(t_pf *pf, char **format)
 		pf->flags = pf->flags | PF_ML;
 }
 
-void		ft_parsing(t_pf *pf, char *format)
+void			ft_parsing(t_pf *pf, char *format)
 {
-	while(*format && !ft_memchr("diouxXfcsp%", *format, 11))
+	while (*format && !ft_memchr("diouxXfcsp%", *format, 11))
 	{
-		 if (ft_strchr("#0-+ ", *format))
+		if (ft_strchr("#0-+ ", *format))
 			ft_get_flag(pf, &format);
 		else if (ft_strchr("0123456789", *format))
 			ft_get_width(pf, &format);
@@ -67,10 +77,10 @@ void		ft_parsing(t_pf *pf, char *format)
 		else if (ft_strchr("hlL", *format))
 			ft_get_modifier(pf, &format);
 		else
-			break;
+			break ;
 		++format;
 	}
-	if(*format)
+	if (*format)
 		pf->cur = format;
 	ft_putarg(pf, format);
 }
