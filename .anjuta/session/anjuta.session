@@ -1,5 +1,8 @@
 [Anjuta]
-Geometry=976x795+166+135
+Geometry=1287x816+117+230
+
+[File Loader]
+Files=../../src/ft_parsing.c#1
 
 [Document Manager]
 bookmarks=<?xml version="1.0" encoding="UTF-8"?>\n<bookmarks/>\n
