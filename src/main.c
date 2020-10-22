@@ -12,18 +12,20 @@
 
 #include "ft_printf.h"
 #include <stdio.h>
+#include "limits.h"
 
 int		main(void)
 {
 	int		i;
 
-	i = printf("origin_pf: %3.2d|\n", 1);
-	ft_putstr("return: ");
+	i = printf("%hx", -1518156344);
+	ft_putstr("\nreturn: ");
 	ft_putnbr(i);
 	ft_putchar('\n');
-	i = ft_printf("ft_printf: %3.2d|\n", 1);
-	ft_putstr("return: ");
+	i = ft_printf("%hx", -1518156344);
+	ft_putstr("\nreturn: ");
 	ft_putnbr(i);
 	ft_putchar('\n');
+
 	return (0);
 }

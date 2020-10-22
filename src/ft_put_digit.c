@@ -32,13 +32,13 @@ void		ft_digit_prefix(t_pf *pf, int prec, int sgn)
 	if (!(pf->flags & PF_ALIGN) && (!(pf->flags & PF_ZERO)
 			|| (pf->flags & PF_PREC)))
 		ft_putchar_n(' ', pf->width);
-	c = sgn ? '-' : '+';
-	ft_putchar_n(c, (pf->flags & PF_PLUS) || sgn);
+	c = (pf->flags & PF_SPACE) ? ' ' : 0;
+	if ((pf->flags & PF_PLUS) || sgn)
+		c = sgn ? '-' : '+';
+	ft_putchar_n(c, (pf->flags & PF_PLUS) || sgn || (pf->flags & PF_SPACE));
 	if (!(pf->flags & PF_ALIGN) && (pf->flags & PF_ZERO)
 			&& !(pf->flags & PF_PREC))
 		ft_putchar_n('0', pf->width);
-	if (!(pf->flags & PF_PLUS) && !sgn && (pf->flags & PF_SPACE))
-		ft_putchar(' ');
 	ft_putchar_n('0', prec);
 }
 

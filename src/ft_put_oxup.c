@@ -46,7 +46,7 @@ void		ft_put_prefix(t_pf *pf, char f, int *width, unsigned long long nb)
 		ft_putchar_n(' ', *width);
 	ft_putchar_n(f == 'p' && !(pf->flags & PF_PLUS) ? ' ' : '+',
 				((pf->flags & PF_PLUS) || (pf->flags & PF_SPACE)) && f == 'p');
-	pf->i += f == 'p';
+	//pf->i += f == 'p';
 	if ((pf->flags & PF_SHARP) && f == 'o' && nb)
 		ft_putchar('0');
 	else if ((pf->flags & PF_SHARP) && f != 'u' && nb)

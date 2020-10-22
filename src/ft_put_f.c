@@ -12,16 +12,6 @@
 
 #include "ft_printf.h"
 
-int			ft_put_llf(long double nb, int prec)
-{
-	while (prec--)
-	{
-		ft_putchar('0' + nb * 10);
-		nb = nb * 10 - (int)(nb * 10);
-	}
-	return (prec);
-}
-
 int			ft_put_lli(unsigned long long nb, int size)
 {
 	unsigned long long	div;
@@ -39,11 +29,24 @@ int			ft_put_lli(unsigned long long nb, int size)
 	return (len);
 }
 
+int			ft_put_llf(long double nb, int prec)
+{
+	while (prec--)
+		nb *= 10;
+	ft_put_lli((unsigned long long)(nb + 0.5), prec);
+	return (prec);
+}
+
 void		ft_get_f(t_pf *pf, long long *n, long double *d)
 {
-	long double				nb;
+	long double		nb;
 
-	nb = va_arg(*(pf->arg), long double);
+	if (pf->flags & PF_ML)
+		nb = va_arg(*(pf->arg), long double);
+	else if (pf->flags & PF_LL)
+		nb = va_arg(*(pf->arg), double);
+	else
+		nb = va_arg(*(pf->arg), double);
 	*n = (long long)nb;
 	*d = nb - *n;
 }
@@ -58,7 +61,7 @@ void		ft_f_prefix(t_pf *pf, int *len, int prec, long long n)
 		ft_putchar(' ');
 	if (!(pf->flags & PF_ALIGN) && (pf->flags & PF_ZERO))
 		ft_putchar_n('0', len[0]);
-	pf->i += ft_put_lli(n < 0 ? -n : n, 12) + len[0] + prec + 1;
+	pf->i += ft_put_lli(n < 0 ? -n : n, len[1]) + len[0] + prec + 1;
 	if ((prec || (pf->flags & PF_PREC)))
 		ft_putchar('.');
 }
@@ -78,6 +81,7 @@ void		ft_put_f(t_pf *pf)
 	len[2] = prec;
 	len[0] = len[1] + len[2] < pf->width ? pf->width - len[1] - len[2] : 0;
 	len[0] -= ((pf->flags & PF_PLUS) || (pf->flags & PF_SPACE) || (n < 0));
+	len[0] = len[0] < 0 ? 0 : len[0];
 	ft_f_prefix(pf, len, prec, n);
 	ft_put_llf(d < 0 ? -d : d, prec);
 	if (pf->flags & PF_ALIGN)

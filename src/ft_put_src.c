@@ -14,8 +14,15 @@
 
 void		ft_put_percent(t_pf *pf)
 {
-	ft_putchar('%');
-	++(pf->i);
+    int		space;
+
+    space = pf->width > 1 ? pf->width - 1 : 0;
+    if (!(pf->flags & PF_ALIGN))
+        ft_putchar_n(' ', space);
+    ft_putchar('%');
+    if (pf->flags & PF_ALIGN)
+        ft_putchar_n(' ', space);
+    (pf->i) += 1 + space;
 }
 
 void		ft_put_pf_char(t_pf *pf, char c)
