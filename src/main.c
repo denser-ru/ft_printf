@@ -11,14 +11,16 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 #include "limits.h"
+
+/*
+/** #include <stdio.h>
+*/
 
 int		main(void)
 {
 	int		i;
 
-	i = printf("%hx", -1518156344);
 	ft_putstr("\nreturn: ");
 	ft_putnbr(i);
 	ft_putchar('\n');
@@ -26,6 +28,5 @@ int		main(void)
 	ft_putstr("\nreturn: ");
 	ft_putnbr(i);
 	ft_putchar('\n');
-
 	return (0);
 }
