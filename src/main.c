@@ -6,7 +6,7 @@
 /*   By: cayako <cayako@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 14:30:43 by cayako            #+#    #+#             */
-/*   Updated: 2020/10/18 14:30:53 by cayako           ###   ########.fr       */
+/*   Updated: 2020/11/12 12:56:25 by cayako           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 /*
 /** #include <stdio.h>
+** It`s file for testinf ft_printf function !
 */
 
 int		main(void)
