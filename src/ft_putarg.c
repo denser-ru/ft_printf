@@ -32,7 +32,7 @@ void		ft_putarg(t_pf *pf, char *format)
 		ft_put_f(pf);
 	else
 	{
-		ft_putchar('%');
+		ft_putchar_mem(pf->put, '%');
 		++(pf->i);
 		return ;
 	}
