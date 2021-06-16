@@ -24,7 +24,7 @@ SRC = ft_printf.c ft_parsing.c ft_putarg.c ft_pf_utils.c ft_put_digit.c \
 		ft_put_src.c ft_put_oxup.c ft_put_f.c ft_putmem.c
 FTSRC = ft_putchar.c ft_putstr.c ft_bzero.c ft_putnstr.c ft_strchr.c ft_atoi.c \
 		ft_memchr.c ft_putnbr.c ft_strlen.c ft_memset.c ft_iswhitespace.c \
-		ft_isdigit.c
+		ft_isdigit.c ft_memalloc.c ft_memcpy.c ft_memdel.c
 
 OBJ	= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 FTOBJ	= $(addprefix $(FTDIR),$(FTSRC:.c=.o))
